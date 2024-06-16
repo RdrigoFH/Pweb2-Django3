@@ -13,6 +13,7 @@ def index(request):
         'numbers': numbers,
         'words': words,
         'users': users,
-        'show_adults': True  
+        'current_date': '2024-06-15',
+        'currency': 1500,
     }
     return render(request, 'index.html', context)
