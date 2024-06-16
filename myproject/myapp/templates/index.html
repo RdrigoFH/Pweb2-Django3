@@ -30,7 +30,13 @@
             <li>{{ word }}</li>
         {% endfor %}
     </ul>
-    
+
+    <h2>Ejemplo 3: Usuarios y Edades</h2>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.name }} ({{ user.age }} )</li>
+        {% endfor %}
+    </ul>
 
 </body>
 </html>
