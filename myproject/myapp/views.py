@@ -1,19 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import PersonaForm
 
-def index(request):
-    numbers = [1, 2, 3, 4, 5]
-    words = ['apple', 'banana', 'cherry']
-    users = [
-        {'name': 'Alice', 'age': 25, 'is_adult': True},
-        {'name': 'Bob', 'age': 17, 'is_adult': False},
-        {'name': 'Charlie', 'age': 30, 'is_adult': True}
-    ]
+def crear_persona(request):
+    if request.method == 'POST':
+        form = PersonaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('admin:index')  
+    else:
+        form = PersonaForm()
     
-    context = {
-        'numbers': numbers,
-        'words': words,
-        'users': users,
-        'current_date': '2024-06-15',
-        'currency': 1500,
-    }
-    return render(request, 'index.html', context)
+    return render(request, 'crear_persona.html', {'form': form})
