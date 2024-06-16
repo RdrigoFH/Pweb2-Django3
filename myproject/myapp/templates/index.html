@@ -15,7 +15,7 @@
         <h3>Con templates</h3>
         <p>Esto es sobre nosotros, 123</p>
     </ul>
-    <h1>Ejemplos propios del uso del forloop</h1>
+    <h1>Ejemplos propios del uso de If</h1>
     
     <h2>Ejemplo 1: Numeros</h2>
     <ul>
@@ -30,11 +30,13 @@
             <li>{{ word }}</li>
         {% endfor %}
     </ul>
-
-    <h2>Ejemplo 3: Usuarios y Edades</h2>
+    
+    <h2>Ejemplo 3: Usuarios</h2>
     <ul>
         {% for user in users %}
-            <li>{{ user.name }} ({{ user.age }} )</li>
+            {% if user.is_adult and show_adults %}
+                <li>{{ user.name }} ({{ user.age }} )</li>
+            {% endif %}
         {% endfor %}
     </ul>
 
